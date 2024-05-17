@@ -240,29 +240,29 @@ module openAi 'core/ai/cognitiveservices.bicep' = {
   scope: openAiResourceGroup
   params: {
     name: !empty(openAiServiceName) ? openAiServiceName : '${abbrs.cognitiveServicesOpenAI}${resourceToken}'
-    location: openAiResourceGroupLocation
+    location: 'East US 2'
     tags: tags
     sku: {
       name: openAiSkuName
     }
     deployments: deployOpenAIModels && !searchSkipVectorization ? [
-        {
-          name: !empty(gptDeploymentName) ? gptDeploymentName : 'gpt-4'
-          model: {
-            format: 'OpenAI'
-            name: !empty(gptModelName) ? gptModelName : 'gpt-4'
-            version: !empty(gptModelVersion) ? gptModelVersion : '0314'
-          }
-          scaleSettings: {
-            scaleType: 'Standard'
-          }
-        }
+        // {
+        //   name: !empty(gptDeploymentName) ? gptDeploymentName : 'gpt-4'
+        //   model: {
+        //     format: 'OpenAI'
+        //     name: !empty(gptModelName) ? gptModelName : 'gpt-4'
+        //     version: !empty(gptModelVersion) ? gptModelVersion : '0613'
+        //   }
+        //   scaleSettings: {
+        //     scaleType: 'Standard'
+        //   }
+        // }
         {
           name: !empty(classifierGptDeploymentName) ? classifierGptDeploymentName : 'gpt-35-turbo'
           model: {
             format: 'OpenAI'
             name: !empty(classifierGptModelName) ? classifierGptModelName : 'gpt-35-turbo'
-            version: !empty(classifierGptModelVersion) ? classifierGptModelVersion : '0301'
+            version: !empty(classifierGptModelVersion) ? classifierGptModelVersion : '0613'
           }
           scaleSettings: {
             scaleType: 'Standard'

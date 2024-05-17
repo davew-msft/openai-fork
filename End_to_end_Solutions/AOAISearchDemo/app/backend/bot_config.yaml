@@ -54,7 +54,7 @@ approach_classifier:
     user_message_format: "{utterance}"
     assistant_message_format: "{formatted_answer}"
   openai_settings:
-    engine: <YOUR_AZURE_OPENAI_CLASSIFIER_DEPLOYMENT>
+    engine: gpt-35-turbo
     temperature: 0.0
     max_tokens: 1
     n: 1
@@ -87,14 +87,14 @@ structured_query_nl_to_sql:
     user_message_format: "{utterance}"
     assistant_message_format: "{formatted_answer}"
   openai_settings:
-    engine: <YOUR_AZURE_OPENAI_DEPLOYMENT>
+    engine: gpt-4
     temperature: 0.0
     max_tokens: 2000
     frequency_penalty: 0
     presence_penalty: 0
     stop: null
   model_params:
-    model_name: <YOUR_AZURE_OPENAI_MODEL>
+    model_name: gpt-4
     total_max_tokens: 8192
 
 structured_final_answer_generation:
@@ -103,7 +103,7 @@ structured_final_answer_generation:
   history:
     include: false
   openai_settings:
-    engine: <YOUR_AZURE_OPENAI_DEPLOYMENT>
+    engine: gpt-4
     temperature: 0.0
     max_tokens: 2000
     frequency_penalty: 0
@@ -123,7 +123,7 @@ unstructured_search_query_generation:
     user_message_format: "{utterance}"
     assistant_message_format: "{formatted_answer}"
   openai_settings:
-    engine: <YOUR_AZURE_OPENAI_DEPLOYMENT>
+    engine: gpt-4
     temperature: 0.0
     max_tokens: 50
     n: 1
@@ -151,14 +151,14 @@ unstructured_final_answer_generation:
     user_message_format: "{utterance}"
     assistant_message_format: "{formatted_answer}"
   openai_settings:
-    engine: <YOUR_AZURE_OPENAI_DEPLOYMENT>
+    engine: gpt-4
     temperature: 0.0
     max_tokens: 800
     n: 1
   model_params:
-    model_name: <YOUR_AZURE_OPENAI_MODEL>
+    model_name: gpt-4
     total_max_tokens: 8192
 
 embeddings:
   openai_settings:
-    engine: <YOUR_AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT>
+    engine: text-embedding-ada-002
