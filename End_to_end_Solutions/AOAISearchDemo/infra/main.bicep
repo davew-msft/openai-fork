@@ -240,7 +240,7 @@ module openAi 'core/ai/cognitiveservices.bicep' = {
   scope: openAiResourceGroup
   params: {
     name: !empty(openAiServiceName) ? openAiServiceName : '${abbrs.cognitiveServicesOpenAI}${resourceToken}'
-    location: openAiResourceGroupLocation
+    location: 'East US 2'
     tags: tags
     sku: {
       name: openAiSkuName
@@ -251,7 +251,7 @@ module openAi 'core/ai/cognitiveservices.bicep' = {
           model: {
             format: 'OpenAI'
             name: !empty(gptModelName) ? gptModelName : 'gpt-4'
-            version: !empty(gptModelVersion) ? gptModelVersion : '0314'
+            version: !empty(gptModelVersion) ? gptModelVersion : '0613'
           }
           scaleSettings: {
             scaleType: 'Standard'
@@ -262,7 +262,7 @@ module openAi 'core/ai/cognitiveservices.bicep' = {
           model: {
             format: 'OpenAI'
             name: !empty(classifierGptModelName) ? classifierGptModelName : 'gpt-35-turbo'
-            version: !empty(classifierGptModelVersion) ? classifierGptModelVersion : '0301'
+            version: !empty(classifierGptModelVersion) ? classifierGptModelVersion : '0613'
           }
           scaleSettings: {
             scaleType: 'Standard'
