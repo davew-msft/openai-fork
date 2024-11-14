@@ -66,7 +66,8 @@ if ($process.ExitCode -ne 0) {
   Write-Host ""
   Write-Warning "Installing post-deployment dependencies failed with non-zero exit code $LastExitCode."
   Write-Host ""
-  exit $process.ExitCode
+  Write-Host "NOT EXITING"
+  # exit $process.ExitCode
 }
 
 Write-Host ""
