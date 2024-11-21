@@ -71,7 +71,7 @@ if ($process.ExitCode -ne 0) {
 }
 
 Write-Host ""
-Write-Host 'Running "prepdocs.py"...'
+Write-Host 'SKIPPING "prepdocs.py"...'
 Write-Host ""
 $predocsArguments = "./scripts/indexing/prepdocs.py", "./data/surface_device_documentation/",
   "--storageaccount", $env:AZURE_STORAGE_ACCOUNT,
@@ -86,16 +86,16 @@ $predocsArguments = "./scripts/indexing/prepdocs.py", "./data/surface_device_doc
   "--openAITokenLimit", $env:AZURE_OPENAI_EMBEDDINGS_TOKEN_LIMIT,
   "--openAIDimensions", $env:AZURE_OPENAI_EMBEDDINGS_DIMENSIONS,
   "-v"
-$process = Start-Process -FilePath $venvPythonPath -ArgumentList $predocsArguments -Wait -NoNewWindow -PassThru
+# $process = Start-Process -FilePath $venvPythonPath -ArgumentList $predocsArguments -Wait -NoNewWindow -PassThru
 
-if ($process.ExitCode -ne 0) {
-  Write-Host ""
-  Write-Warning "Document ingestion into search index failed with non-zero exit code $LastExitCode. This process must run successfully at least once for Cognitive Search to behave properly."
-  Write-Host ""
-}
+# if ($process.ExitCode -ne 0) {
+#   Write-Host ""
+#   Write-Warning "Document ingestion into search index failed with non-zero exit code $LastExitCode. This process must run successfully at least once for Cognitive Search to behave properly."
+#   Write-Host ""
+# }
 
 Write-Host ""
-Write-Host 'Running "prepopulate.py"...'
+Write-Host 'SKIPPING "prepopulate.py"...'
 Write-Host ""
 $prepoulateArguments = "./scripts/prepopulate/prepopulate.py",
   "--entitiespath", "./scripts/prepopulate/entries/entities.yaml",
@@ -105,28 +105,28 @@ $prepoulateArguments = "./scripts/prepopulate/prepopulate.py",
   "--cosmosdbentitiescontainername", $env:AZURE_COSMOS_DB_ENTITIES_CONTAINER_NAME,
   "--cosmosdbpermissionscontainername", $env:AZURE_COSMOS_DB_PERMISSIONS_CONTAINER_NAME,
   "-v"
-$process = Start-Process -FilePath $venvPythonPath -ArgumentList $prepoulateArguments -Wait -NoNewWindow -PassThru
+# $process = Start-Process -FilePath $venvPythonPath -ArgumentList $prepoulateArguments -Wait -NoNewWindow -PassThru
 
-if ($process.ExitCode -ne 0) {
-  Write-Host ""
-  Write-Warning "Prepopulation of necessary Cosmos DB tables failed with non-zero exit code $LastExitCode. This process must run successfully at least once for the sample to run properly."
-  Write-Host ""
-}
+# if ($process.ExitCode -ne 0) {
+#   Write-Host ""
+#   Write-Warning "Prepopulation of necessary Cosmos DB tables failed with non-zero exit code $LastExitCode. This process must run successfully at least once for the sample to run properly."
+#   Write-Host ""
+# }
 
 Write-Host ""
-Write-Host 'Running "populate_sql.py"...'
+Write-Host 'SKIPPING "populate_sql.py"...'
 Write-Host ""
-$populatesqlArguments = "./scripts/prepopulate/populate_sql.py",
-  "--sqlconnectionstring", "`"$env:SQL_CONNECTION_STRING`"",
-  "--subscriptionid", "$env:AZURE_SUBSCRIPTION_ID",
-  "--resourcegroup", "$env:AZURE_RESOURCE_GROUP",
-  "--servername", "$env:SQL_SERVER_NAME",
-  "-v"
+# $populatesqlArguments = "./scripts/prepopulate/populate_sql.py",
+#   "--sqlconnectionstring", "`"$env:SQL_CONNECTION_STRING`"",
+#   "--subscriptionid", "$env:AZURE_SUBSCRIPTION_ID",
+#   "--resourcegroup", "$env:AZURE_RESOURCE_GROUP",
+#   "--servername", "$env:SQL_SERVER_NAME",
+#   "-v"
 
-$process = Start-Process -FilePath $venvPythonPath -ArgumentList $populatesqlArguments -Wait -NoNewWindow -PassThru
+# $process = Start-Process -FilePath $venvPythonPath -ArgumentList $populatesqlArguments -Wait -NoNewWindow -PassThru
 
-if ($process.ExitCode -ne 0) {
-  Write-Host ""
-  Write-Warning "Prepopulation of necessary SQL tables failed with non-zero exit code $LastExitCode. This process must run successfully at least once for the sample to run properly."
-  Write-Host ""
-}
+# if ($process.ExitCode -ne 0) {
+#   Write-Host ""
+#   Write-Warning "Prepopulation of necessary SQL tables failed with non-zero exit code $LastExitCode. This process must run successfully at least once for the sample to run properly."
+#   Write-Host ""
+# }

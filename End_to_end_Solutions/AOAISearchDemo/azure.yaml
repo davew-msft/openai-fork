@@ -15,7 +15,7 @@ services:
 hooks:
   preprovision:
     shell: pwsh
-    run: Install-Module AzureAD -Force;Connect-AzAccount;$principalId = (Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id;azd env set AZURE_PRINCIPAL_ID $principalId
+    run: Install-Module AzureAD -Force;Connect-AzAccount -Tenant '16b3c013-d300-468d-ac64-7eda0820b6d3' -SubscriptionId '46dbfa9c-1d3a-4595-b77c-a400e2bd4fbe'
     continueOnError: false
     interactive: true
   postprovision:

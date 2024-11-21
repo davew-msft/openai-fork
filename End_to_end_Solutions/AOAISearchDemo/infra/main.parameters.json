@@ -78,7 +78,7 @@
             "value": "standard"
         },
         "searchSkipVectorization": {
-            "value": false
+            "value": true
         },
         "storageAccountName": {
             "value": "${AZURE_STORAGE_ACCOUNT}"
